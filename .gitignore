@@ -1,0 +1,52 @@
+# Prisma generated client
+generated/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build outputs
+client/dist/
+client/build/
+server/dist/
+
+# Tailwind cache
+client/.turbo/
+client/.next/
+client/.parcel-cache/
+client/.cache/
+
+# Coverage reports
+coverage/
+
+# Env files (nunca versionar credenciais locais)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript build info
+*.tsbuildinfo
