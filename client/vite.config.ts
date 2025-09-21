@@ -8,9 +8,8 @@ export default defineConfig({
   base: "/Interface-CRUD-Linux/",
   build: {
     outDir: "dist",
-    // Verifique se não há configurações excluindo arquivos:
     rollupOptions: {
-      input: "index.html", // Garanta que o index.html é o ponto de entrada
+      input: "index.html",
     },
   },
 });
