@@ -1,4 +1,4 @@
-# Interface-CRUD-Linux
+# KernelAdmin
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d13fa921-5eac-479a-bd37-4155e9aff4bf" alt="Linux-CRUD" width="600"/>
@@ -72,8 +72,8 @@ Este é um projeto simples de full-stack para gerenciamento básico de usuários
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/Arkmedess/Interface-CRUD-Linux.git
-cd Interface-CRUD-Linux
+git clone https://github.com/Arkmedess/KernelAdmin.git
+cd KernelAdmin
 ```
 
 2. Instale dependências:
@@ -119,7 +119,7 @@ DATABASE_URL="mongodb+srv://<seu_usuario>:<sua_senha>@users.lv44pyu.mongodb.net/
 ## Estrutura de Diretórios
 
 ```
-Interface-CRUD-Linux/
+KernelAdmin/
 ├── client/                 # Frontend React
 │   ├── public/            # Arquivos estáticos
 │   │   └── linux.svg
