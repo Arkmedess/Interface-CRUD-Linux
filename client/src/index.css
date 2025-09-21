@@ -1,0 +1,23 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@theme {
+  --bg-color: #02132d;
+  --bg-color-2: #000000;
+}
+
+@layer base {
+  body {
+    @apply flex items-center justify-center m-[0px] p-[2rem] min-h-[100vh] w-[100vw]; 
+    background: linear-gradient(to bottom, var(--bg-color-2) 10%, var(--bg-color) 100%);
+    background-size: 100% 100%;
+    font-family: 'JetBrains Mono', monospace;
+    color: white
+  }
+  * {
+    @apply m-[0px] p-[0px];
+    box-sizing: border-box;
+  }
+
+
+}
