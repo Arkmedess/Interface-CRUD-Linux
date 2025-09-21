@@ -1,6 +1,6 @@
 import "./style.css";
 import Trash from "../../assets/trash.svg";
-import React, { useEffect, useRef , useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import api from "../../../services/api";
 
 const MatrixBg: React.FC = () => {
@@ -10,29 +10,29 @@ const MatrixBg: React.FC = () => {
     const matrixBg = matrixRef.current;
     if (!matrixBg) return;
 
-    matrixBg.innerHTML = '';
+    matrixBg.innerHTML = "";
 
     const columns = Math.floor(window.innerWidth / 20);
 
     for (let i = 0; i < columns; i++) {
-      const column = document.createElement('div');
-      column.className = 'matrix-col';
+      const column = document.createElement("div");
+      column.className = "matrix-col";
       column.style.left = `${i * 20}px`;
       column.style.animationDuration = `${Math.random() * 8 + 6}s`;
       column.style.animationDelay = `${Math.random() * 10}s`;
 
-      const chars = '01';
-      let text = '';
-      
+      const chars = "01";
+      let text = "";
+
       for (let j = 0; j < 50; j++) {
-        text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+        text += chars[Math.floor(Math.random() * chars.length)] + "<br>";
       }
       column.innerHTML = text;
 
       try {
         matrixBg?.appendChild(column);
       } catch (error) {
-        console.error('Erro ao criar efeito de matrix:', error);
+        console.error("Erro ao criar efeito de matrix:", error);
       }
     }
   };
@@ -44,45 +44,46 @@ const MatrixBg: React.FC = () => {
   return <div className="matrix-bg" ref={matrixRef}></div>;
 };
 
-
 function Home() {
-  const  [users, setUsers] = useState<{ id: string; name: string; age: number; email: string }[]>([]);
+  const [users, setUsers] = useState<
+    { id: string; name: string; age: number; email: string }[]
+  >([{ id: "99999", name: "Visualização do Card", age: 99, email: "teste.email@exemplo.com" }]);
 
   const inputName = useRef<HTMLInputElement>(null);
   const inputEmail = useRef<HTMLInputElement>(null);
   const inputAge = useRef<HTMLInputElement>(null);
 
-async function getUsers() {
-  const usersAPI = await api.get('/usuarios')
-  setUsers(usersAPI.data);
-}
+  async function getUsers() {
+    const usersAPI = await api.get("/usuarios");
+    setUsers(usersAPI.data);
+  }
 
-async function CreateUsers() {
-  await api.post('/usuarios', {
-    name: inputName.current?.value,
-    email: inputEmail.current?.value,
-    age: inputAge.current?.value
-  });
+  async function CreateUsers() {
+    await api.post("/usuarios", {
+      name: inputName.current?.value,
+      email: inputEmail.current?.value,
+      age: inputAge.current?.value,
+    });
 
-  await getUsers();
+    await getUsers();
 
-  if (inputName.current) inputName.current.value = '';
-  if (inputAge.current) inputAge.current.value = '';
-  if (inputEmail.current) inputEmail.current.value = '';
-}
+    if (inputName.current) inputName.current.value = "";
+    if (inputAge.current) inputAge.current.value = "";
+    if (inputEmail.current) inputEmail.current.value = "";
+  }
 
-async function deleteUsers(id: string) {
-  await api.delete(`/usuarios/${id}`);
-  await getUsers();
-}
+  async function deleteUsers(id: string) {
+    await api.delete(`/usuarios/${id}`);
+    await getUsers();
+  }
 
   useEffect(() => {
-  getUsers()
-}, []);
+    getUsers();
+  }, []);
 
   return (
     <>
- <MatrixBg />
+      <MatrixBg />
       <div className="terminal-container">
         <div className="terminal-window">
           <div className="terminal-header">
@@ -105,7 +106,7 @@ async function deleteUsers(id: string) {
                     name="nome"
                     type="text"
                     placeholder="[username]"
-                    ref = {inputName}
+                    ref={inputName}
                   ></input>
                 </div>
 
@@ -130,7 +131,11 @@ async function deleteUsers(id: string) {
                     ref={inputEmail}
                   />
                 </div>
-                <button type="button" className="form-submit" onClick={CreateUsers}>
+                <button
+                  type="button"
+                  className="form-submit"
+                  onClick={CreateUsers}
+                >
                   {" "}
                   [EXECUTE]{" "}
                 </button>
@@ -171,7 +176,10 @@ async function deleteUsers(id: string) {
                           </div>
 
                           <div className="user-actions">
-                            <button className="delete-btn" onClick={() => deleteUsers(user.id)}>
+                            <button
+                              className="delete-btn"
+                              onClick={() => deleteUsers(user.id)}
+                            >
                               <img src={Trash} alt="" />
                             </button>
                           </div>
@@ -194,6 +202,7 @@ async function deleteUsers(id: string) {
         </div>
       </div>
     </>
-)};
+  );
+}
 
 export default Home;
